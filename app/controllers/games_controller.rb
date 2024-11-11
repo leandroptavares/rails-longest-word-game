@@ -17,12 +17,12 @@ class GamesController < ApplicationController
 
     if score["found"] == true
       if @word.split("").all? { |letter|  @letters.include?(letter)}
-        @result = "Congratulations! #{@word.upcase} is a valid English word!"
+        @result = "Congratulations! #{@word} is a valid English word!"
       else
-        @result = "Sorry but #{@word.upcase} can't be built with #{@letters}"
+        @result = "Sorry but #{@word} can't be built with #{@letters}"
       end
     else
-      @result = "Sorry but #{@word.upcase} does not seem to be a valid English word..."
+      @result = "Sorry but #{@word} does not seem to be a valid English word..."
     end
   end
 end
