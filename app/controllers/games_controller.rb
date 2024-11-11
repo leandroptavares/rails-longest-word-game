@@ -9,8 +9,8 @@ class GamesController < ApplicationController
 
   def score
     # raise
-    @letters = params[:letters].split(",")
-    @word = params[:word]
+    @letters = params[:letters].upcase
+    @word = params[:word].upcase
     url = "https://dictionary.lewagon.com/#{params[:word]}"
     score_serialized = URI.parse(url).read
     score = JSON.parse(score_serialized)
@@ -19,7 +19,7 @@ class GamesController < ApplicationController
       if @word.split("").all? { |letter|  @letters.include?(letter)}
         @result = "Congratulations! #{@word.upcase} is a valid English word!"
       else
-        @result = "Sorry but #{@word.upcase} can't be built with #{@letters.join(" ").upcase}"
+        @result = "Sorry but #{@word.upcase} can't be built with #{@letters}"
       end
     else
       @result = "Sorry but #{@word.upcase} does not seem to be a valid English word..."
